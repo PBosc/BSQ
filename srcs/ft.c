@@ -6,7 +6,7 @@
 /*   By: vegret <victor.egret.pro@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 12:13:18 by vegret            #+#    #+#             */
-/*   Updated: 2022/07/25 18:55:09 by vegret           ###   ########.fr       */
+/*   Updated: 2022/07/25 22:15:07 by vegret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,12 @@ void	ft_putstr(char *str)
 	}
 }
 
-char	**ft_remove_first_element(char **str, int size)
+int	ft_strlen(char *str)
 {
-	char	**result;
-	int		i;
+	int	i;
 
-	result = malloc((size - 1) * sizeof(char *));
-	i = 1;
-	while (i < size)
-	{
-		result[i] = str[i];
+	i = 0;
+	while (str[i] != '\0')
 		i++;
-	}
-	return (result);
+	return (i);
 }

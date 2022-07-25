@@ -1,5 +1,6 @@
 SRCDIR	= srcs/
-SRC		= $(SRCDIR)main.c $(SRCDIR)ft.c $(SRCDIR)input.c $(SRCDIR)map.c
+SRC		= $(SRCDIR)main.c $(SRCDIR)ft.c $(SRCDIR)input.c $(SRCDIR)map.c \
+			$(SRCDIR)ft_antoi.c $(SRCDIR)ft_split.c
 OBJ		= $(SRC:.c=.o)
 NAME	= bsq
 CC		= gcc

@@ -6,13 +6,15 @@
 /*   By: vegret <victor.egret.pro@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 11:30:28 by vegret            #+#    #+#             */
-/*   Updated: 2022/07/25 11:32:10 by vegret           ###   ########.fr       */
+/*   Updated: 2022/07/25 21:29:39 by vegret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INPUT_H
 # define INPUT_H
 
-char	**load_map(char *path);
+# include "map.h"
+
+t_map	*load_map(char *path);
 
 #endif
