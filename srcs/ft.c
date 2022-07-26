@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vegret <victor.egret.pro@gmail.com>        +#+  +:+       +#+        */
+/*   By: pbosc <pbosc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 12:13:18 by vegret            #+#    #+#             */
-/*   Updated: 2022/07/25 22:15:07 by vegret           ###   ########.fr       */
+/*   Updated: 2022/07/26 04:20:01 by pbosc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,20 @@ int	ft_strlen(char *str)
 	while (str[i] != '\0')
 		i++;
 	return (i);
+}
+
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
+{
+	unsigned int	i;
+	int				len;
+
+	i = 0;
+	len = ft_strlen(dest);
+	while (i < nb && src[i] != '\0')
+	{
+		dest[len + i] = src[i];
+		i++;
+	}
+	dest[len + i] = '\0';
+	return (dest);
 }

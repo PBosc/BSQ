@@ -6,7 +6,7 @@
 /*   By: pbosc <pbosc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 20:40:09 by pbosc             #+#    #+#             */
-/*   Updated: 2022/07/26 02:37:29 by pbosc            ###   ########.fr       */
+/*   Updated: 2022/07/26 04:06:25 by pbosc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "../includes/input.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
 int		**mathify(t_map *map)
 {
@@ -92,6 +93,10 @@ int **squarify(int **mathmap, int size)
 		}
 		i++;
 	}
+	i = 0;
+	while (i < size)
+		free(mathmap[i++]);
+	free(mathmap);
 	return (new_map);
 }
 
@@ -162,5 +167,9 @@ char **change_square(t_map *map, int **mathmap)
 		}
 		i--;
 	}
+	i = 0;
+	while (i < map->lines)
+		free(mathmap[i++]);
+	free(mathmap);
 	return (map_terrain);
 }

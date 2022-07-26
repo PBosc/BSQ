@@ -6,7 +6,7 @@
 /*   By: pbosc <pbosc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 22:05:25 by pbosc             #+#    #+#             */
-/*   Updated: 2022/07/26 02:38:28 by pbosc            ###   ########.fr       */
+/*   Updated: 2022/07/26 04:26:44 by pbosc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "../includes/input.h"
 #include <unistd.h>
 #include <stdlib.h>
+#include <fcntl.h>
 #include <stdio.h>
 
 char **change_square(t_map *map, int **mathmap);
@@ -28,26 +29,16 @@ int main(int argc, char *argv[])
 	int i = 0;
 	int j = 0;
 	char c;
-	// map = malloc(sizeof(t_map));
-	// map->terrain = malloc(9 * sizeof(char *));
-	// while (i < 9)
-	// 	map->terrain[i++] = malloc(9);
-	// map->lines = 9;
-	// map->symbols = "9.ox";
-	// map->terrain[0] = "o.....o..";
-	// map->terrain[1] = ".......oo";
-	// map->terrain[2] = ".......o.";
-	// map->terrain[3] = ".....o...";
-	// map->terrain[4] = ".........";
-	// map->terrain[5] = "......o..";
-	// map->terrain[6] = "...o.....";
-	// map->terrain[7] = "o..o....o";
-	// map->terrain[8] = "o.....o..";
-	char buffer[4096];
-	read(0, buffer, 4096);
+	int fd;
+	char buffer[5000000];
+	if (argc < 2)
+		fd = 0;
+	else
+		fd = open(argv[1], O_RDONLY);
+	int ret = read(fd, buffer, 5000000);
+	printf("%d", ret);
 	map = parse_stdin(buffer);
 	char **map_finished = change_square(map, squarify(mathify(map), map->lines));
-	int **mathmap = squarify(mathify(map), 9);
 	i = 0;
 	while (i < map->lines)
 	{
@@ -60,5 +51,14 @@ int main(int argc, char *argv[])
 		write(1, "\n", 1);
 		i++;
 	}
+	i = 0;
+	while (i < map->lines)
+		free(map_finished[i++]);
+	free(map_finished);
+	i = 0;
+	while (i < map->lines)
+		free(map->terrain[i++]);
+	free(map->terrain);
+	free(map);
 	return 0;
 }
