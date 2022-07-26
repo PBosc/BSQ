@@ -6,11 +6,12 @@
 /*   By: vegret <victor.egret.pro@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 11:48:06 by vegret            #+#    #+#             */
-/*   Updated: 2022/07/25 19:38:10 by vegret           ###   ########.fr       */
+/*   Updated: 2022/07/25 22:14:31 by vegret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <unistd.h>
 #include "map.h"
 #include "ft.h"
 
@@ -58,6 +59,7 @@ int	is_valid_terrain(t_map *map)
 	first_len = ft_strlen(map->terrain[0]);
 	if (map->lines < 1 || first_len < 1)
 		return (0);
+	// FIXME Segfault
 	while (i < map->lines)
 	{
 		if (ft_strlen(map->terrain[i]) != first_len
@@ -90,6 +92,8 @@ int	is_valid_map(t_map *map)
 	int	i;
 
 	i = 0;
+	if (map->symbols == NULL)
+		return (0);
 	while (map->symbols[i])
 	{
 		if (i > 2 || map->symbols[i] < 31 || map->symbols[i] > 126
