@@ -1,10 +1,10 @@
 SRCDIR	= srcs/
-SRC		= $(SRCDIR)main.c $(SRCDIR)ft.c $(SRCDIR)input.c $(SRCDIR)map.c
+SRC		= $(SRCDIR)tests.c ${SRCDIR}find_BSQ.c $(SRCDIR)ft_split.c $(SRCDIR)input.c
 OBJ		= $(SRC:.c=.o)
 NAME	= bsq
 CC		= gcc
 RM		= rm -rf
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= 
 HEADERS	= includes/
 
 .c.o:
